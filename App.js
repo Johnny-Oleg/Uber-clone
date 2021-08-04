@@ -1,13 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
+import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import 'react-native-gesture-handler';
+
+import { store } from './store';
+import HomeScreen from './screens/HomeScreen';
+import MapScreen from './screens/MapScreen';
 
 const App = () => {
+  const Stack = createNativeStackNavigator();
+
     return (
-        <Provider store={store} />
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-            </View>
+        <Provider store={store}>
+            <NavigationContainer>
+                <SafeAreaProvider>
+                    <Stack.Navigator>
+                        <Stack.Screen 
+                            name="HomeScreen" 
+                            component={HomeScreen} 
+                            options={{
+                              headerShown: false,
+                            }}
+                        />
+                        <Stack.Screen 
+                            name="MapScreen" 
+                            component={MapScreen} 
+                            options={{
+                              headerShown: false,
+                            }}
+                        />
+                    </Stack.Navigator>
+                </SafeAreaProvider>
+            </NavigationContainer>
         </Provider>
     )
 }
