@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
-// import { Icon } from 'react-native-elements/dist/icons/Icon';
 import tw from 'tailwind-react-native-classnames';
 
 import { selectOrigin } from '../slices/navSlice';
@@ -22,8 +21,7 @@ const data = [
         title: 'Order or food',
         image: foodImg,
         screen: 'EatsScreen',
-    }
-
+    },
 ]
 
 const NavOptions = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, View, SafeAreaView, Image } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import tw from 'tailwind-react-native-classnames';
 
@@ -25,10 +25,10 @@ const HomeScreen = () => {
                     source={{uri: uberLogo}}
                 />   
                 <GooglePlacesAutocomplete 
-                    placeholder="Where From?"
+                    placeholder="Where from...?"
                     styles={{
                         container: {
-                            flex: 1, //? flex 0
+                            flex: 0, //? flex 1 or 2
                         },
                         textInput: {
                             fontSize: 18,
@@ -49,8 +49,13 @@ const HomeScreen = () => {
                     minLength={2}
                     query={{
                         key: GOOGLE_MAPS_API_KEY,
-                        language: 'en',
+                        language: 'ja',
                     }}
+                    // requestUrl={{
+                    //     useOnPlatform: 'web', // or "all"
+                    //     url:
+                    //     'https://maps.googleapis.com/maps/api', // or any proxy server that hits https://maps.googleapis.com/maps/api
+                    // }}
                     nearbyPlacesAPI="GooglePlacesSearch"
                     debounce={400}
                 />
@@ -63,4 +68,4 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({}) //?
