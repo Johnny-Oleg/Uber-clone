@@ -1,14 +1,42 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import tw from 'tailwind-react-native-classnames';
+
+import Map from '../components/Map';
+import NavigateCard from '../components/NavigateCard';
+import RideOptionsCard from '../components/RideOptionsCard';
 
 const MapScreen = () => {
+    const stack = createNativeStackNavigator();
+
     return (
         <View>
-            <Text></Text>
+            <View style={tw`h-1/2`}>
+                <Map />
+            </View>
+            <View style={tw`h-1/2`}>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="NavigateCard"
+                        component={NavigateCard}
+                        options={{
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="RideOptionsCard"
+                        component={RideOptionsCard}
+                        options={{
+                            headerShown: false,
+                        }}
+                    />
+                </Stack.Navigator>
+            </View>
         </View>
     )
 }
 
-export default MapScreen
+export default MapScreen;
 
 const styles = StyleSheet.create({})

@@ -7,6 +7,8 @@ import tw from 'tailwind-react-native-classnames';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import { setDestination, setOrigin } from '../slices/navSlice';
 import NavOptions from '../components/NavOptions';
+import NavFavourites from '../components/NavFavourites';
+import uberLogo from '../images/Uber_logo.svg.png';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -20,14 +22,13 @@ const HomeScreen = () => {
                         height: 100,
                         resizeMode: 'contain',
                     }}
-                    source={{
-                        uri: 'https://links.papareact.com/gzs',
-                    }}
+                    source={{uri: uberLogo}}
                 />   
                 <GooglePlacesAutocomplete 
+                    placeholder="Where From?"
                     styles={{
                         container: {
-                            flex: 0,
+                            flex: 1, //? flex 0
                         },
                         textInput: {
                             fontSize: 18,
@@ -50,11 +51,11 @@ const HomeScreen = () => {
                         key: GOOGLE_MAPS_API_KEY,
                         language: 'en',
                     }}
-                    placeholder="Where From?"
                     nearbyPlacesAPI="GooglePlacesSearch"
                     debounce={400}
                 />
                 <NavOptions />
+                <NavFavourites />
             </View>
         </SafeAreaView>
     )
@@ -62,8 +63,4 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({
-    text: {
-        color: 'blue',
-    }
-})
+const styles = StyleSheet.create({})
